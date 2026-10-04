@@ -1,0 +1,25 @@
+app-id: io.github.anyones2019.DriverControlTools
+runtime: org.gnome.Platform
+runtime-version: "50"
+sdk: org.gnome.Sdk
+command: driver-control-tools
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --device=dri
+  - --filesystem=xdg-data/driver-control:create
+modules:
+  - name: driver-control-tools
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 packaging/flatpak/driver-control-tools /app/bin/driver-control-tools
+      - install -Dm644 packaging/flatpak/io.github.anyones2019.DriverControlTools.desktop /app/share/applications/io.github.anyones2019.DriverControlTools.desktop
+      - install -Dm644 packaging/flatpak/io.github.anyones2019.DriverControlTools.metainfo.xml /app/share/metainfo/io.github.anyones2019.DriverControlTools.metainfo.xml
+      - install -Dm644 packaging/flatpak/icon.svg /app/share/icons/hicolor/scalable/apps/io.github.anyones2019.DriverControlTools.svg
+      - install -Dm644 gui/catalog_tools.py /app/share/driver-control-tools/gui/catalog_tools.py
+      - install -Dm644 gui/tools_gtk.py /app/share/driver-control-tools/gui/tools_gtk.py
+      - install -Dm644 drivers/old-gpu-catalog.json /app/share/driver-control-tools/drivers/old-gpu-catalog.json
+    sources:
+      - type: dir
+        path: ../..

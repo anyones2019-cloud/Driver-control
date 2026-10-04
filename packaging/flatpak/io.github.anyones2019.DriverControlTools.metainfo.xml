@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.anyones2019.DriverControlTools</id>
+  <name>Driver-control Tools</name>
+  <summary>Browse old GPU targets without installing a driver</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <description>
+    <p>Driver-control Tools is a separate program from the driver helper. It uses the same old GPU catalog. Picking a card saves a selection the driver helper can read. Neither program installs a driver.</p>
+  </description>
+  <launchable type="desktop-id">io.github.anyones2019.DriverControlTools.desktop</launchable>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.1.0" date="2026-10-04"/>
+  </releases>
+</component>

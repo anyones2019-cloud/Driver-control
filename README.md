@@ -21,6 +21,8 @@ All issues: https://github.com/anyones2019-cloud/Driver-control/issues
 
 Catalog GUI: `python3 gui/driver_gui.py`. It browses the old GPU catalog and checks it. It does not install drivers. On Fedora, install `python3-tkinter` first. GUI bugs: https://github.com/anyones2019-cloud/Driver-control/issues/new?template=gui_bug_report.yml
 
+Driver-control Tools is also a separate Flatpak program. It works with the driver helper through the same catalog and `~/.local/share/driver-control/selection.json`. See packaging/flatpak/FLATPAK.md. The driver helper is `python3 scripts/driver_link.py` and it refuses to install.
+
 ---
 
 Okay i defiantly use AI on here and trying to learn to code and this project is that i found trying install hardware drivers for Linux, Fedora 44 using flat pack, licensed under GNU GPL version 3, from my very humble beginnings making Linux easier for new users, prime aims gaming hardware, i hope from seed it will grow into tree, but i am one person, i tried make it safe, cant be used to comprise Linux systems, but i acknowledged i just starting out, i would use virtual machine, to test this out, DO NOT RUN ON MAIN HARDWARE MACHINE, I ALSO I AM NOT HELD Responsible FOR ANYTHING THAT GOES WRONG ON YOUR Machine RUN IT ON BAREBONES HARDWARE YOU HAVE BE WARNED THIS IS A STARTING OUT PROJECT, 2026 12 September.

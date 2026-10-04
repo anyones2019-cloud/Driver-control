@@ -36,7 +36,7 @@ def welcome(author: str) -> str:
             "- drivers/README.md explains old NVIDIA, AMD, and Intel GPU families.",
             "- drivers/old-gpu-catalog.json is the list of old GPU targets. It is a catalog, not a driver download.",
             "- scripts/check-catalog.py checks that catalog. On a good run it prints ok.",
-            "- docs/Driver-control.pdf is the one-page project sheet.",
+            "- packaging/flatpak/FLATPAK.md builds Driver-control Tools as its own Flatpak. Picking a card writes a selection. scripts/driver_link.py reads it and refuses to install a driver.",
             f"- The discussion notice board is {NOTICE}",
             "",
             "How a new programmer should test",

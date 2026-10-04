@@ -100,11 +100,8 @@ def main() -> int:
         if item is None:
             detail.set("No card selected.")
             return
-        detail.set(
-            f"{item['vendor']} {item['branch']}: {item['cards']}\n"
-            f"Try the open-source driver first: {item['open_source']}\n"
-            f"Vendor page, for a VM only: {item['source']}"
-        )
+        detail.set(tools.plan(item).rstrip())
+        tools.write_selection(item)
 
     def run_check() -> None:
         ok, errors = tools.check_catalog(data)

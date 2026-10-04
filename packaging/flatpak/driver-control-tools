@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /app/share/driver-control-tools
+exec python3 gui/tools_gtk.py

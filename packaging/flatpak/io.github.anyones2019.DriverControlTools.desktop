@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Driver-control Tools
+Comment=Browse old GPU targets. Does not install a driver.
+Exec=driver-control-tools
+Icon=io.github.anyones2019.DriverControlTools
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupNotify=true
