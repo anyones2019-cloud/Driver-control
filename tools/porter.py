@@ -23,7 +23,7 @@ def welcome(author: str) -> str:
             f"Welcome, {author}. I am the porter. I will show you around.",
             "",
             "What this project is",
-            "Driver-control is a beginner project. The aim is a GUI that helps people install Linux hardware drivers, with Fedora, Flatpak, and gaming hardware in mind. The owner is learning in public. The app source is not in this repo yet, so nothing here launches a window.",
+            "Driver-control is a beginner project. The aim is a GUI that helps people install Linux hardware drivers, with Fedora, Flatpak, and gaming hardware in mind. The owner is learning in public. A catalog GUI is in gui/driver_gui.py. It does not install drivers. Run it only in a Linux virtual machine.",
             "",
             "License",
             "GNU GPL version 3. Read LICENSE before you copy or change the project.",

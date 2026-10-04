@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+"""Catalog tools for the Driver-control GUI. No driver is downloaded or installed."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+VM_RULE = "Linux VM only. Do not install on a main machine."
+
+
+def repo_root() -> Path:
+    return Path(__file__).resolve().parents[1]
+
+
+def catalog_path() -> Path:
+    return repo_root() / "drivers" / "old-gpu-catalog.json"
+
+
+def load_catalog(path: Path | None = None) -> dict:
+    return json.loads((path or catalog_path()).read_text(encoding="utf-8"))
+
+
+def check_catalog(data: dict) -> tuple[bool, list[str]]:
+    errors: list[str] = []
+    if data.get("test_rule") != VM_RULE:
+        errors.append("missing VM-only rule")
+    vendors = data.get("vendors")
+    if not isinstance(vendors, list) or not vendors:
+        errors.append("vendors missing")
+    else:
+        for vendor in vendors:
+            if not vendor.get("vendor") or not vendor.get("branches"):
+                errors.append("vendor entry incomplete")
+            for branch in vendor.get("branches", []):
+                if not branch.get("branch") or not branch.get("cards") or not branch.get("source"):
+                    errors.append("branch entry incomplete")
+    return (not errors, errors)
+
+
+def rows(data: dict) -> list[dict[str, str]]:
+    found = []
+    for vendor in data.get("vendors", []):
+        open_source = vendor.get("open_source", "")
+        if isinstance(open_source, list):
+            open_source = ", ".join(open_source)
+        for branch in vendor.get("branches", []):
+            cards = branch.get("cards", [])
+            found.append(
+                {
+                    "vendor": str(vendor.get("vendor", "")),
+                    "open_source": str(open_source),
+                    "branch": str(branch.get("branch", "")),
+                    "cards": ", ".join(cards) if isinstance(cards, list) else str(cards),
+                    "source": str(branch.get("source", "")),
+                }
+            )
+    return found
+
+
+def search_rows(items: list[dict[str, str]], query: str) -> list[dict[str, str]]:
+    words = query.lower().split()
+    if not words:
+        return items
+    return [item for item in items if all(word in " ".join(item.values()).lower() for word in words)]
