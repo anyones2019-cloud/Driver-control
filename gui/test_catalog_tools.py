@@ -45,7 +45,17 @@ class CatalogToolTests(unittest.TestCase):
         self.assertEqual(found[0]["branch"], "470.xx")
         self.assertEqual(found[0]["open_source"], "nouveau")
 
-    def test_load_round_trip(self):
+    def test_open_source_list_is_readable(self):
+        data = sample()
+        data["vendors"][0]["open_source"] = ["radeon", "amdgpu"]
+        self.assertEqual(tools.rows(data)[0]["open_source"], "radeon, amdgpu")
+
+    def test_repeated_errors_are_reported_once(self):
+        data = sample()
+        data["vendors"].append({"vendor": "", "branches": [{}, {}]})
+        ok, errors = tools.check_catalog(data)
+        self.assertFalse(ok)
+        self.assertEqual(errors.count("branch entry incomplete"), 1)
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "catalog.json"
             path.write_text(json.dumps(sample()), encoding="utf-8")

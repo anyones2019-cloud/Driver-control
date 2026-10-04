@@ -32,10 +32,14 @@ def check_catalog(data: dict) -> tuple[bool, list[str]]:
         for vendor in vendors:
             if not vendor.get("vendor") or not vendor.get("branches"):
                 errors.append("vendor entry incomplete")
-            for branch in vendor.get("branches", []):
+            for branch in vendor.get("branches") or []:
                 if not branch.get("branch") or not branch.get("cards") or not branch.get("source"):
                     errors.append("branch entry incomplete")
-    return (not errors, errors)
+    unique: list[str] = []
+    for error in errors:
+        if error not in unique:
+            unique.append(error)
+    return (not unique, unique)
 
 
 def rows(data: dict) -> list[dict[str, str]]:

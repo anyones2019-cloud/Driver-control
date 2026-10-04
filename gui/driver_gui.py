@@ -42,6 +42,12 @@ def main() -> int:
     warning.pack(fill="x", padx=12, pady=(12, 4))
 
     allowed = tk.BooleanVar(value=False)
+    confirm = ttk.Checkbutton(
+        root,
+        text="I am inside a Linux virtual machine, not a main machine",
+        variable=allowed,
+    )
+    confirm.pack(anchor="w", padx=12, pady=(0, 4))
 
     search_var = tk.StringVar()
     status = tk.StringVar(value="Confirm the virtual machine, then pick a card.")
@@ -68,9 +74,12 @@ def main() -> int:
         return tools.search_rows(items, search_var.get())
 
     def refill(*_args) -> None:
+        previous = str(listing.cget("state"))
+        listing.configure(state="normal")
         listing.delete(0, "end")
         for item in shown_items():
             listing.insert("end", f"{item['vendor']}  {item['branch']}  {item['cards']}")
+        listing.configure(state=previous)
 
     def selected() -> dict[str, str] | None:
         picked = listing.curselection()
@@ -102,8 +111,13 @@ def main() -> int:
         if item is None:
             status.set("Select a card before copying its vendor page.")
             return
-        root.clipboard_clear()
-        root.clipboard_append(item["source"])
+        try:
+            root.clipboard_clear()
+            root.clipboard_append(item["source"])
+            root.update_idletasks()
+        except tk.TclError:
+            status.set("Could not copy. The vendor page is shown above.")
+            return
         status.set("Vendor page copied. Open it yourself, inside the VM only.")
 
     def toggle() -> None:
@@ -121,17 +135,12 @@ def main() -> int:
     copy_button = ttk.Button(buttons, text="Copy vendor page", command=copy_link, state="disabled")
     check_button.pack(side="left")
     copy_button.pack(side="left", padx=8)
-
-    ttk.Checkbutton(
-        root,
-        text="I am inside a Linux virtual machine, not a main machine",
-        variable=allowed,
-        command=toggle,
-    ).pack(anchor="w", padx=12, pady=(0, 8))
+    confirm.configure(command=toggle)
 
     search_var.trace_add("write", refill)
     listing.bind("<<ListboxSelect>>", show_selected)
     refill()
+    toggle()
     root.mainloop()
     return 0
 
