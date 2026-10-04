@@ -34,10 +34,11 @@ jobs:
         run: |
           set -euo pipefail
           python3 -m unittest test_porter.py
-          issues=$(gh api --method GET search/issues -f q="repo:${GITHUB_REPOSITORY} author:${AUTHOR}" --jq .total_count)
-          discussions=$(gh api graphql -f query='query($q:String!){ search(query:$q, type:DISCUSSION, first:1) { discussionCount } }' -f q="repo:${GITHUB_REPOSITORY} author:${AUTHOR}" --jq .data.search.discussionCount)
-          current=1
-          earlier=$((issues + discussions - current))
+          issues=$(gh api --method GET search/issues -f q="repo:${GITHUB_REPOSITORY} author:${AUTHOR}" --jq '.total_count // 0')
+          discussions=$(gh api graphql -f query='query($q:String!){ search(query:$q, type:DISCUSSION, first:1) { discussionCount } }' -f q="repo:${GITHUB_REPOSITORY} author:${AUTHOR}" --jq '.data.search.discussionCount // 0')
+          issues=${issues:-0}
+          discussions=${discussions:-0}
+          earlier=$((issues + discussions - 1))
           if [ "$earlier" -lt 0 ]; then earlier=0; fi
           export EARLIER_POSTS="$earlier"
           python3 porter.py > /tmp/porter-note.txt
