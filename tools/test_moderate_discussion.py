@@ -20,7 +20,15 @@ class ModeratorTests(unittest.TestCase):
         self.assertIn("docs/finger-wag.gif", text)
         self.assertIn("👆 No no. 🙏 Manners please!", text)
 
-    def test_clean_chat_has_no_finger_wag(self):
+    def test_sass_at_the_bot_gets_a_comeback(self):
+        text = bot.reply("Tone", "shut up bot, you are useless", "guest")
+        self.assertIn("Sass received.", text)
+        self.assertNotIn("finger-wag.gif", text)
+
+    def test_owner_sass_is_not_a_fight(self):
+        text = bot.reply("Tone", "whatever, bot", "anyones2019-cloud")
+        self.assertIn("This is not a fight.", text)
+        self.assertIn("does not pick on them", text)
         text = bot.reply("Idea", "A quiet question about Fedora", "guest")
         self.assertNotIn("👆", text)
         text = bot.reply("Note", "Just an idea", "anyones2019-cloud")

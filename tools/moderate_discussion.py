@@ -15,6 +15,17 @@ _SWEAR = re.compile(
     r"\b(?:fuck\w*|shit\w*|bitch\w*|bastard|asshole|dick|piss\w*|cunt|bollocks|wanker|twat|motherfucker)\b",
     re.IGNORECASE,
 )
+_AT_BOT = re.compile(r"\b(?:bot|moderator)\b", re.IGNORECASE)
+_RUDE = re.compile(
+    r"\b(?:shut up|stupid|dumb|useless|annoying|sassy|suck|lame|whatever|yeah right|oh please|nice try)\b",
+    re.IGNORECASE,
+)
+_COMEBACKS = (
+    "Sass received. I am a checklist with a picture, and the checklist still stands.",
+    "Sass received. You can be sharp. The test still belongs in a virtual machine.",
+    "Sass received. I do not have feelings. I do have the bug form.",
+    "Sass received. Talking down to the bot is allowed. Closing this thread is not.",
+)
 
 
 def classify(text: str) -> str:
@@ -33,12 +44,25 @@ def has_swear(text: str) -> bool:
     return _SWEAR.search(text) is not None
 
 
+def sassy_at_bot(text: str) -> bool:
+    return _AT_BOT.search(text) is not None and _RUDE.search(text) is not None
+
+
+def sass_line(text: str, author: str) -> str:
+    if author == OWNER:
+        return "Sass received. Owner noted. This is not a fight."
+    return _COMEBACKS[sum(ord(ch) for ch in text) % len(_COMEBACKS)]
+
+
 def reply(title: str, body: str, author: str) -> str:
     full = f"{title}\n{body}"
     kind = classify(full)
     lines = []
     if has_swear(full):
         lines.append(FINGER_WAG)
+        lines.append("")
+    if sassy_at_bot(full):
+        lines.append(sass_line(full, author))
         lines.append("")
     lines.extend(
         [
