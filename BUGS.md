@@ -4,6 +4,6 @@ Checked on Linux. No installer program exists, so driver install was not run.
 
 - Fixed: TESTING.md told testers to run a program and also said there is nothing to run.
 - Fixed: added scripts/check-catalog.py so the catalog can be validated on Linux.
-- Fixed: README said MIT while LICENSE was AGPL-3.0. Project license is now GPL-3.
+- Fixed: license wording is GNU GPL version 3.
 - Open: .gitignore is a Jekyll template and does not match this project. Not changed.
 - Open: proprietary GPU packages are not in the repo, so they cannot be install-tested here.
