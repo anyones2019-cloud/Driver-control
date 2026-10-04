@@ -9,3 +9,5 @@ Public volunteer testers are asked to:
 5. Report distro, VM software, catalog check result, and pass or fail on the GitHub issue.
 
 Do not test on a main hardware machine.
+
+Virus scanning is enabled on commits. Every push and pull request is scanned. If the scan is clean, the commit is allowed. If a virus, trojan, or malware is found, it is not allowed.
