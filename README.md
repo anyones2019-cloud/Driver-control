@@ -19,7 +19,7 @@ Do not run this on a main machine or bare metal.
 Bug reports: https://github.com/anyones2019-cloud/Driver-control/issues/new?template=bug_report.yml
 All issues: https://github.com/anyones2019-cloud/Driver-control/issues
 
-Catalog GUI: `python3 gui/driver_gui.py`. It browses the old GPU catalog and checks it. It does not install drivers. On Fedora, install `python3-tkinter` first. See TESTING.md and drivers/README.md.
+Catalog GUI: `python3 gui/driver_gui.py`. It browses the old GPU catalog and checks it. It does not install drivers. On Fedora, install `python3-tkinter` first. GUI bugs: https://github.com/anyones2019-cloud/Driver-control/issues/new?template=gui_bug_report.yml
 
 ---
 

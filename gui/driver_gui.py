@@ -41,6 +41,13 @@ def main() -> int:
     )
     warning.pack(fill="x", padx=12, pady=(12, 4))
 
+    report = ttk.Label(
+        root,
+        text="GUI bug report: https://github.com/anyones2019-cloud/Driver-control/issues/new?template=gui_bug_report.yml",
+        wraplength=720,
+    )
+    report.pack(fill="x", padx=12, pady=(0, 4))
+
     allowed = tk.BooleanVar(value=False)
     confirm = ttk.Checkbutton(
         root,

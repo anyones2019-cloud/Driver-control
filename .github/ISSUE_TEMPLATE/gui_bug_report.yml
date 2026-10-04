@@ -1,0 +1,61 @@
+name: GUI bug report
+description: The catalog GUI crashed, would not open, or showed the wrong card.
+title: "[gui] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for gui/driver_gui.py only. The GUI does not install a driver.
+        Test only in a Linux virtual machine. Debate the issue, not the person.
+  - type: input
+    id: distro
+    attributes:
+      label: Distro and version
+      placeholder: Fedora 44
+    validations:
+      required: true
+  - type: input
+    id: vm
+    attributes:
+      label: VM software
+      placeholder: GNOME Boxes, VirtualBox, QEMU
+    validations:
+      required: true
+  - type: dropdown
+    id: tkinter
+    attributes:
+      label: Is python3-tkinter installed?
+      options:
+        - "Yes"
+        - "No"
+        - "Not sure"
+    validations:
+      required: true
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Which GUI tool failed?
+      options:
+        - Window would not open
+        - Search
+        - Card list
+        - Check catalog
+        - Copy vendor page
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: Include the error text if the window printed one.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: false

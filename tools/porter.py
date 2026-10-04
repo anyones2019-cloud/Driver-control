@@ -9,6 +9,7 @@ OWNER = "anyones2019-cloud"
 SKIP = {OWNER, "github-actions", "github-actions[bot]"}
 NOTICE = "https://github.com/anyones2019-cloud/Driver-control/discussions/3"
 BUGS = "https://github.com/anyones2019-cloud/Driver-control/issues/new?template=bug_report.yml"
+GUI_BUGS = "https://github.com/anyones2019-cloud/Driver-control/issues/new?template=gui_bug_report.yml"
 
 
 def should_greet(author: str, earlier_posts: int) -> bool:
@@ -46,6 +47,7 @@ def welcome(author: str) -> str:
             "5. This repo does not contain NVIDIA, AMD, or Intel proprietary binaries. Download those from the vendor, and only inside the VM.",
             "6. Report the distro, the VM software, the catalog result, and pass or fail.",
             f"Bug form: {BUGS}",
+            f"GUI bug form: {GUI_BUGS}",
             "",
             "Safety that is already on",
             "Every push and pull request is virus-scanned. A clean commit stays on main. Only an infected commit is moved to quarantine.",

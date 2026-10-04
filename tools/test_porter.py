@@ -11,7 +11,7 @@ class PorterTests(unittest.TestCase):
         self.assertIn("Welcome, newdev.", text)
         self.assertIn("I will show you around.", text)
         self.assertIn("gui/driver_gui.py", text)
-        self.assertIn("does not install drivers", text)
+        self.assertIn("gui_bug_report.yml", text)
         self.assertIn("GNU GPL version 3", text)
         self.assertIn("drivers/old-gpu-catalog.json", text)
         self.assertIn("scripts/check-catalog.py", text)
