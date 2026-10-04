@@ -27,11 +27,12 @@ jobs:
           DISCUSSION_BODY: ${{ github.event.discussion.body }}
           COMMENT_BODY: ${{ github.event.comment.body }}
           AUTHOR: ${{ github.event.sender.login }}
-          NUMBER: ${{ github.event.discussion.number }}
+          DISCUSSION_ID: ${{ github.event.discussion.node_id }}
         working-directory: tools
         run: |
           set -euo pipefail
           python3 -m unittest test_moderate_discussion.py
           python3 moderate_discussion.py > /tmp/moderator-note.txt
-          jq -n --rawfile body /tmp/moderator-note.txt '{body:$body}' \
-            | gh api --method POST "repos/${GITHUB_REPOSITORY}/discussions/${NUMBER}/comments" --input -
+          jq -n --rawfile body /tmp/moderator-note.txt --arg id "$DISCUSSION_ID" \
+            '{query:"mutation($id:ID!, $body:String!) { addDiscussionComment(input:{discussionId:$id, body:$body}) { comment { url } } }", variables:{id:$id, body:$body}}' \
+            | gh api graphql --input -
