@@ -108,5 +108,16 @@ def plan(item: dict[str, str]) -> str:
     ) + "\n"
 
 
+def display_backend(env: dict[str, str] | None = None) -> str:
+    """Pick a GTK backend for Hyprland and the other Linux window managers."""
+    env = os.environ if env is None else env
+    chosen = env.get("GDK_BACKEND", "").strip()
+    if chosen:
+        return chosen
+    if env.get("WAYLAND_DISPLAY") or env.get("HYPRLAND_INSTANCE_SIGNATURE"):
+        return "wayland,x11"
+    return "x11"
+
+
 def refuse_install() -> str:
     return "Refusing to install a driver. Stay in a Linux virtual machine and use the open-source driver from the tools selection.\n"

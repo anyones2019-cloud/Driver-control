@@ -8,6 +8,7 @@ finish-args:
   - --socket=fallback-x11
   - --socket=wayland
   - --device=dri
+  - --env=GDK_BACKEND=wayland,x11
   - --filesystem=xdg-data/driver-control:create
 modules:
   - name: driver-control-tools

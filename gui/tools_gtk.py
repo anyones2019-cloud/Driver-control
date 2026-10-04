@@ -15,6 +15,7 @@ APP_ID = "io.github.anyones2019.DriverControlTools"
 
 
 def main() -> int:
+    os.environ["GDK_BACKEND"] = tools.display_backend()
     import gi
 
     gi.require_version("Gtk", "4.0")

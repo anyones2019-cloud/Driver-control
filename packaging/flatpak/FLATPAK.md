@@ -19,3 +19,12 @@ python3 scripts/driver_link.py
 ```
 
 `python3 scripts/driver_link.py --install` refuses to install.
+
+## Window managers
+
+The tools use GTK 4.24. Wayland is tried first, then X11.
+
+- Wayland compositors: Hyprland, Sway, river, niri, wayfire, labwc, GNOME, and KDE Plasma on Wayland.
+- X11 window managers: i3, bspwm, awesome, dwm, Openbox, Fluxbox, IceWM, Xfce, MATE, and KDE Plasma on X11.
+
+Hyprland sets `HYPRLAND_INSTANCE_SIGNATURE`. The program treats that as Wayland and still keeps an X11 fallback.

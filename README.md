@@ -21,7 +21,7 @@ All issues: https://github.com/anyones2019-cloud/Driver-control/issues
 
 Catalog GUI: `python3 gui/driver_gui.py`. It browses the old GPU catalog and checks it. It does not install drivers. On Fedora, install `python3-tkinter` first. GUI bugs: https://github.com/anyones2019-cloud/Driver-control/issues/new?template=gui_bug_report.yml
 
-Driver-control Tools is also a separate Flatpak program. It works with the driver helper through the same catalog and `~/.local/share/driver-control/selection.json`. See packaging/flatpak/FLATPAK.md. The driver helper is `python3 scripts/driver_link.py` and it refuses to install.
+Driver-control Tools is also a separate Flatpak program. It works with the driver helper through the same catalog and `~/.local/share/driver-control/selection.json`. See packaging/flatpak/FLATPAK.md. It runs on Hyprland and other Wayland compositors, and on X11 window managers. The driver helper is `python3 scripts/driver_link.py` and it refuses to install.
 
 ---
 

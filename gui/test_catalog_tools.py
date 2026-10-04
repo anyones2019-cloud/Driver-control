@@ -62,6 +62,12 @@ class CatalogToolTests(unittest.TestCase):
             loaded = tools.load_catalog(path)
         self.assertEqual(loaded["vendors"][0]["vendor"], "NVIDIA")
 
+    def test_hyprland_uses_wayland_and_x11_fallback(self):
+        self.assertEqual(tools.display_backend({"HYPRLAND_INSTANCE_SIGNATURE": "abc"}), "wayland,x11")
+        self.assertEqual(tools.display_backend({"WAYLAND_DISPLAY": "wayland-1"}), "wayland,x11")
+        self.assertEqual(tools.display_backend({"DISPLAY": ":0"}), "x11")
+        self.assertEqual(tools.display_backend({"GDK_BACKEND": "x11"}), "x11")
+
 
 if __name__ == "__main__":
     unittest.main()
