@@ -1,0 +1,54 @@
+{
+  "note": "Catalog of old GPU driver targets. No proprietary binaries are stored in this repo.",
+  "test_rule": "Linux VM only. Do not install on a main machine.",
+  "vendors": [
+    {
+      "vendor": "NVIDIA",
+      "open_source": "nouveau",
+      "branches": [
+        {
+          "branch": "470.xx",
+          "cards": ["Kepler", "GeForce GTX 600", "GeForce GTX 700"],
+          "source": "https://www.nvidia.com/en-us/drivers/unix/"
+        },
+        {
+          "branch": "390.157",
+          "cards": ["Fermi", "GeForce 400", "GeForce 500"],
+          "source": "https://www.nvidia.com/en-us/drivers/unix/linux-display-archive/"
+        },
+        {
+          "branch": "340.108",
+          "cards": ["Tesla", "GeForce 8", "GeForce 9", "GeForce 200", "GeForce 300"],
+          "source": "https://www.nvidia.com/en-us/drivers/unix/linux-display-archive/"
+        }
+      ]
+    },
+    {
+      "vendor": "AMD",
+      "open_source": ["radeon", "amdgpu"],
+      "branches": [
+        {
+          "branch": "kernel radeon / amdgpu",
+          "cards": ["Radeon HD 7000", "R9 200", "GCN 1.0", "GCN 1.1"],
+          "source": "https://www.amd.com/en/support/download/linux-drivers.html"
+        },
+        {
+          "branch": "amdgpu",
+          "cards": ["RX 400", "RX 500", "RX Vega"],
+          "source": "https://www.amd.com/en/support/download/linux-drivers.html"
+        }
+      ]
+    },
+    {
+      "vendor": "Intel",
+      "open_source": "i915",
+      "branches": [
+        {
+          "branch": "i915",
+          "cards": ["older Intel integrated graphics"],
+          "source": "in-kernel"
+        }
+      ]
+    }
+  ]
+}
