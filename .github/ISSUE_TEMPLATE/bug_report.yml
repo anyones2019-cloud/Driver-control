@@ -1,0 +1,48 @@
+name: Bug report
+description: Report a problem found while testing on a Linux VM
+title: "[bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Test only in a Linux virtual machine. Do not report bare-metal runs.
+  - type: input
+    id: distro
+    attributes:
+      label: Distro and version
+      placeholder: Fedora 44
+    validations:
+      required: true
+  - type: input
+    id: vm
+    attributes:
+      label: VM software
+      placeholder: GNOME Boxes, VirtualBox, QEMU
+    validations:
+      required: true
+  - type: input
+    id: gpu
+    attributes:
+      label: GPU family and driver branch
+      placeholder: Kepler, NVIDIA 470.xx
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: What you did
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+    validations:
+      required: true
