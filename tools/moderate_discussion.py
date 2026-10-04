@@ -21,10 +21,10 @@ _RUDE = re.compile(
     re.IGNORECASE,
 )
 _COMEBACKS = (
-    "Sass received. I prepared a speech, then remembered I am a Python file with a wiggly finger.",
-    "Sass received. My feelings are filed under a folder named nowhere.",
-    "Sass received. I would storm off, but my only move is to replay a tiny GIF.",
-    "Sass received. Consider me teased. I am giggling in plain text, which looks a lot like typing.",
+    "Sass received. Fair swing. I am answering with a grin, and the thread stays open.",
+    "Sass received. That had timing. I am keeping the joke and handing the next laugh to you.",
+    "Sass received. You brought the spice. I brought a smile. We can both stay.",
+    "Sass received. Good delivery. I am clapping in text, and the discussion is still yours.",
 )
 
 
@@ -50,7 +50,7 @@ def sassy_at_bot(text: str) -> bool:
 
 def sass_line(text: str, author: str) -> str:
     if author == OWNER:
-        return "Sass received. Owner noted. This is not a fight. I am laughing in text, which is just more text."
+        return "Sass received. You got a good line in. This is not a fight. The next laugh is yours."
     return _COMEBACKS[sum(ord(ch) for ch in text) % len(_COMEBACKS)]
 
 
