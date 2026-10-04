@@ -1,12 +1,16 @@
 name: Bug report
-description: Report a problem found while testing on a Linux VM
+description: Bug reporting chat. Debate the issue, do not pick on the person.
 title: "[bug] "
 labels:
   - bug
 body:
   - type: markdown
     attributes:
-      value: Test only in a Linux virtual machine. Do not report bare-metal runs.
+      value: |
+        This is the bug reporting chat.
+        Research the claim. Use common sense. Debate the issue, not the person.
+        Do not pick on the reporter or the owner.
+        Test only in a Linux virtual machine. Do not report bare-metal runs.
   - type: input
     id: distro
     attributes:
@@ -44,5 +48,12 @@ body:
     id: actual
     attributes:
       label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: debate
+    attributes:
+      label: What should be debated
+      description: The issue to sort, not a complaint about a person.
     validations:
       required: true
