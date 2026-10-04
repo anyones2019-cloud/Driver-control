@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -106,7 +107,9 @@ def main() -> int:
                 if item is None:
                     status.set_text("Select a card before copying its vendor page.")
                     return
-                window.get_clipboard().set(item["source"])
+                from gi.repository import Gdk
+
+                window.get_clipboard().set_content(Gdk.ContentProvider.new_for_value(item["source"]))
                 status.set_text("Vendor page copied. Open it yourself, inside the VM only.")
 
             def toggle(_button):
@@ -123,6 +126,26 @@ def main() -> int:
             refill()
             toggle(allowed)
             window.present()
+            if os.environ.get("DRIVER_CONTROL_TOOLS_SMOKE") == "1":
+                from gi.repository import GLib
+
+                def smoke():
+                    allowed.set_active(True)
+                    row = listing.get_row_at_index(0)
+                    listing.select_row(row)
+                    check_button.emit("clicked")
+                    checked = status.get_text()
+                    copy_button.emit("clicked")
+                    copied = status.get_text()
+                    print(f"SMOKE check={checked}", flush=True)
+                    print(f"SMOKE copy={copied}", flush=True)
+                    print(f"SMOKE detail={detail.get_text().splitlines()[0]}", flush=True)
+                    if "Catalog check: ok" not in checked:
+                        print("SMOKE_FAIL check", flush=True)
+                    self.quit()
+                    return False
+
+                GLib.idle_add(smoke)
 
     app = ToolsApp(application_id=APP_ID)
     return app.run(sys.argv)
