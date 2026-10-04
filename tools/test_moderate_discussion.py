@@ -17,7 +17,7 @@ class ModeratorTests(unittest.TestCase):
 
     def test_swear_gets_a_finger_wag(self):
         text = bot.reply("Tone", "what the " + "fuck is this", "guest")
-        self.assertIn("👆 No no.", text)
+        self.assertIn("👆 No no. Manners please!", text)
 
     def test_clean_chat_has_no_finger_wag(self):
         text = bot.reply("Idea", "A quiet question about Fedora", "guest")
