@@ -10,7 +10,7 @@ import os
 import re
 
 OWNER = "anyones2019-cloud"
-FINGER_WAG = "👆 No no. 🙏 Manners please!"
+FINGER_WAG = "![No no. Manners please](https://raw.githubusercontent.com/anyones2019-cloud/Driver-control/main/docs/finger-wag.gif)\n\n👆 No no. 🙏 Manners please!"
 _SWEAR = re.compile(
     r"\b(?:fuck\w*|shit\w*|bitch\w*|bastard|asshole|dick|piss\w*|cunt|bollocks|wanker|twat|motherfucker)\b",
     re.IGNORECASE,
