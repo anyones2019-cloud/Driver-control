@@ -7,8 +7,14 @@ Debates the post, not the person. Does not close or delete anything.
 from __future__ import annotations
 
 import os
+import re
 
 OWNER = "anyones2019-cloud"
+FINGER_WAG = "👆 No no."
+_SWEAR = re.compile(
+    r"\b(?:fuck\w*|shit\w*|bitch\w*|bastard|asshole|dick|piss\w*|cunt|bollocks|wanker|twat|motherfucker)\b",
+    re.IGNORECASE,
+)
 
 
 def classify(text: str) -> str:
@@ -23,13 +29,24 @@ def classify(text: str) -> str:
     return "question"
 
 
+def has_swear(text: str) -> bool:
+    return _SWEAR.search(text) is not None
+
+
 def reply(title: str, body: str, author: str) -> str:
-    kind = classify(f"{title}\n{body}")
-    lines = [
-        "Moderator note. This is the first try of the project. The post is up for debate, not the person.",
-        "",
-        f"Sorted as: {kind}.",
-    ]
+    full = f"{title}\n{body}"
+    kind = classify(full)
+    lines = []
+    if has_swear(full):
+        lines.append(FINGER_WAG)
+        lines.append("")
+    lines.extend(
+        [
+            "Moderator note. This is the first try of the project. The post is up for debate, not the person.",
+            "",
+            f"Sorted as: {kind}.",
+        ]
+    )
     if author == OWNER:
         lines.append("This is the owner. The note does not pick on them.")
     if kind == "unsafe request":

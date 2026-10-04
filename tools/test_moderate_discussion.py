@@ -15,7 +15,13 @@ class ModeratorTests(unittest.TestCase):
         self.assertIn("Sorted as: unsafe request.", text)
         self.assertIn("virtual machine", text)
 
-    def test_does_not_pick_on_the_owner(self):
+    def test_swear_gets_a_finger_wag(self):
+        text = bot.reply("Tone", "what the " + "fuck is this", "guest")
+        self.assertIn("👆 No no.", text)
+
+    def test_clean_chat_has_no_finger_wag(self):
+        text = bot.reply("Idea", "A quiet question about Fedora", "guest")
+        self.assertNotIn("👆", text)
         text = bot.reply("Note", "Just an idea", "anyones2019-cloud")
         self.assertIn("does not pick on them", text)
         self.assertNotIn("Sorted as: unsafe", text)
