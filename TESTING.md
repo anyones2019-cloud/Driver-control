@@ -10,4 +10,4 @@ Public volunteer testers are asked to:
 
 Do not test on a main hardware machine.
 
-Virus scanning is enabled on commits. Every push and pull request is scanned. If the scan is clean, the commit is allowed. If a virus, trojan, or malware is found, it is not allowed.
+Virus scanning is enabled on commits. Every push and pull request is scanned. If the scan is clean, the commit is allowed. If it is infected, the commit is quarantined and not allowed on main.
