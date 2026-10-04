@@ -3,11 +3,9 @@
 Public volunteer testers are asked to:
 
 1. Use a Linux virtual machine only. Fedora is the target. Flatpak is the intended install path.
-2. Run the driver-install program.
-3. Add drivers to it.
-4. Test if those drivers work in the VM.
-5. Report results on the GitHub issue: distro, VM software, drivers added, pass or fail.
+2. Run `python3 scripts/check-catalog.py`. It must print `ok`.
+3. Pick an old GPU family from drivers/old-gpu-catalog.json.
+4. There is no installer program in this repo yet. Do not expect a GUI to launch.
+5. Report distro, VM software, catalog check result, and pass or fail on the GitHub issue.
 
 Do not test on a main hardware machine.
-
-App source is not in this repository yet. There is nothing to build or run until that source is added.
