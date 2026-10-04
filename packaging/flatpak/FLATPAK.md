@@ -7,7 +7,7 @@ The tools program and `scripts/driver_link.py` share `drivers/old-gpu-catalog.js
 Build and install on Fedora, inside a Linux virtual machine:
 
 ```bash
-flatpak install -y flathub org.gnome.Platform//50 org.gnome.Sdk//50
+flatpak install -y flathub org.gnome.Platform//51 org.gnome.Sdk//51
 flatpak-builder --user --install --force-clean build packaging/flatpak/io.github.anyones2019.DriverControlTools.yml
 flatpak run io.github.anyones2019.DriverControlTools
 ```

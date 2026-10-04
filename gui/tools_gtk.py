@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Flatpak window for Driver-control Tools. Separate from the driver helper."""
+"""Flatpak window for Driver-control Tools. Uses GTK 4.24 from the GNOME 51 runtime."""
 
 from __future__ import annotations
 
