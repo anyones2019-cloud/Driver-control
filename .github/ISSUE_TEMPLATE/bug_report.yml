@@ -1,5 +1,5 @@
 name: Bug report
-description: Bug reporting chat. Debate the issue, do not pick on the person.
+description: Bug reporting chat. First try of the project.
 title: "[bug] "
 labels:
   - bug
@@ -7,10 +7,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        This is the bug reporting chat.
-        Research the claim. Use common sense. Debate the issue, not the person.
-        Do not pick on the reporter or the owner.
-        Test only in a Linux virtual machine. Do not report bare-metal runs.
+        This is the first try of the project. We may not get it right on the first go. We are here to learn and make Linux better.
+        Discuss the project here. Debate the issue, not the person. Do not pick on the reporter or the owner.
+        Test only in a Linux virtual machine.
   - type: input
     id: distro
     attributes:
@@ -25,35 +24,9 @@ body:
       placeholder: GNOME Boxes, VirtualBox, QEMU
     validations:
       required: true
-  - type: input
-    id: gpu
-    attributes:
-      label: GPU family and driver branch
-      placeholder: Kepler, NVIDIA 470.xx
-    validations:
-      required: true
-  - type: textarea
-    id: steps
-    attributes:
-      label: What you did
-    validations:
-      required: true
-  - type: textarea
-    id: expected
-    attributes:
-      label: What you expected
-    validations:
-      required: true
   - type: textarea
     id: actual
     attributes:
       label: What happened
-    validations:
-      required: true
-  - type: textarea
-    id: debate
-    attributes:
-      label: What should be debated
-      description: The issue to sort, not a complaint about a person.
     validations:
       required: true
