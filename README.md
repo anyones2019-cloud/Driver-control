@@ -2,12 +2,20 @@
 
 Beginner project: a GUI to install Linux hardware drivers (Fedora, Flatpak, gaming hardware).
 
-Test only in a Linux virtual machine. Do not run this on a main machine or bare metal.
+What to test:
+1. Run the program only inside a Linux virtual machine.
+2. Add drivers through the program.
+3. Check that those added drivers actually work in the VM.
+4. Comment with distro, VM software, drivers you added, and pass or fail.
 
-If you can test on a Fedora VM, comment on the issue: https://github.com/anyones2019-cloud/Driver-control/issues
+Do not run this on a main machine or bare metal.
+
+Issue: https://github.com/anyones2019-cloud/Driver-control/issues
+
+App source is not in this repo yet. See TESTING.md.
 
 ---
 
 Okay i defiantly use AI on here and trying to learn to code and this project is that i found trying install hardware drivers for Linux, Fedora 44 using flat pack, i used MIT licence to make it project better, from my very humble beginnings making Linux easier for new users, prime aims gaming hardware, i hope from seed it will grow into tree, but i am one person, i tried make it safe, cant be used to comprise Linux systems, but i acknowledged i just starting out, i would use virtual machine, to test this out, DO NOT RUN ON MAIN HARDWARE MACHINE, I ALSO I AM NOT HELD Responsible FOR ANYTHING THAT GOES WRONG ON YOUR Machine RUN IT ON BAREBONES HARDWARE YOU HAVE BE WARNED THIS IS A STARTING OUT PROJECT, 2026 12 September.
 
-Update 2026-10-04: tested via Linux virtual machine path. Email alert to anyones2019@gmail.com succeeded. Repository is public. App source is not in this repo yet — only README, LICENSE, .gitignore, and LINUX-VM.md.
+Update 2026-10-04: tested via Linux virtual machine path. Email alert to anyones2019@gmail.com succeeded. Repository is public. App source is not in this repo yet — only README, LICENSE, .gitignore, LINUX-VM.md, and TESTING.md.
